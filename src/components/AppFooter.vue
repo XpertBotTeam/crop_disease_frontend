@@ -1,12 +1,19 @@
 <template>
   <footer class="footer">
+   
     <p>&copy; XpertBot. All rights reserved.</p>
   </footer>
 </template>
 
 <script>
 export default {
-  name: 'AppFooter'
+  name: 'AppFooter',
+  methods: {
+    logout() {
+      localStorage.removeItem('user-info'); // Remove user info from local storage
+      this.$router.push('/login'); // Redirect to the login page
+    },
+  },
 }
 </script>
 

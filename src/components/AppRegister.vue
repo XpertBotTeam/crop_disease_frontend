@@ -52,7 +52,7 @@ export default {
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h2 class="text-center text-dark mt-5">Register Page</h2>
+        <h2 class="text-center text-dark mt-5 background">Register Page</h2>
         <div class="card my-5">
           <form class="card-body cardbody-color p-lg-5" @submit.prevent="signup">
             <div class="mb-3">
@@ -116,6 +116,7 @@ export default {
     </div>
   </div>
 </template>
+
 
 
 

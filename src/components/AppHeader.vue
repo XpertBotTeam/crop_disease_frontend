@@ -1,6 +1,11 @@
 <script>
 export default {
   name: "AppHeader",
+  data() {
+    return {
+      isAuthenticated: Boolean,
+    };
+  },
 };
 </script>
 
@@ -22,35 +27,31 @@ export default {
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/">Home</router-link>
+          <li class="nav-item" v-if="isAuthenticated">
+            <router-link class="nav-link" to="/" v-if="isAuthenticated && $route.path !== '/login' && $route.path !== '/register'">Home</router-link>
+
+          </li>
+          <li class="nav-item" v-if="isAuthenticated">
+            <router-link class="nav-link" to="/UploadImage" v-if="isAuthenticated && $route.path !== '/login' && $route.path !== '/register'">Upload image</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/">Upload image</router-link>
+            <router-link class="nav-link" to="/Solution" v-if="isAuthenticated && $route.path !== '/login' && $route.path !== '/register'">Solution</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/">Discord</router-link>
+            <router-link class="nav-link" to="/UserProfile" v-if="isAuthenticated && $route.path !== '/login' && $route.path !== '/register'">Profile</router-link>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/">Profile</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/">History</router-link>
-          </li>
+          
         </ul>
         <span class="navbar-text">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <router-link class="nav-link active" to="/login"
-                >Login</router-link
-              >
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/register"
-                >Register</router-link
-              >
-            </li>
-          </ul>
+  <li class="nav-item" v-if=" !['/','/UserProfile', '/UploadImage', '/Solution'].includes($route.path)">
+    <router-link class="nav-link active" to="/login">Login</router-link>
+  </li>
+  <li class="nav-item" v-if=" !['/','/UserProfile', '/UploadImage', '/Solution'].includes($route.path)">
+    <router-link class="nav-link" to="/register">Register</router-link>
+  </li>
+</ul>
+
         </span>
       </div>
     </div>

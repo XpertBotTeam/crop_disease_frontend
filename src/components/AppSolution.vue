@@ -23,7 +23,7 @@
       <div class="card-content" :class="{ 'enlarged-card': disease.isEnlarged }">
         <div class="card-image">
           <h2>{{ disease.name }}</h2>
-          
+          <!-- Display the disease image if available -->
           <img
             v-if="disease.photos && disease.photos[0]"
             :src="disease.photos[0].image_url"
@@ -73,19 +73,19 @@
 import axios from 'axios';
 
 export default {
-  name: 'AppHome',
+  name: 'AppSolution',
   data() {
     return {
       name: 'Disease Search',
       searchInput: '',
       diseases: [],
-      currentPage: 1, 
-      cardsPerPage: 4, 
+      currentPage: 1, // Current page number
+      cardsPerPage: 4, // Number of cards per page
     };
   },
 
   computed: {
-    
+    // Calculate the start and end indexes for pagination
     startIndex() {
       return (this.currentPage - 1) * this.cardsPerPage;
     },
@@ -145,7 +145,7 @@ export default {
   },
 
   mounted() {
-    
+    // Fetch diseases when the component is mounted
     this.handleSearch();
   },
 };
@@ -189,7 +189,7 @@ export default {
 }
 
 .card:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05); /* Scale up by 5% on hover */
 }
 
 .card h2 {
@@ -203,7 +203,7 @@ export default {
 
 .pagination {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end; /* Align pagination to the right */
   margin-top: 20px;
 }
 
@@ -232,36 +232,36 @@ export default {
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
-  max-width: 250px; 
+  max-width: 250px; /* Adjust the width as needed */
   text-align: center;
   transition: transform 0.2s ease-in-out;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column; /* Display image and details vertically */
+  align-items: center; /* Center align content horizontally */
   position: relative;
 }
 
 .card-content:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05); /* Scale up by 5% on hover */
 }
 
 .large-image {
-  width: 200px; 
-  height: 200px; 
-  object-fit: cover; 
-  object-position: top left; 
-  margin: 0 auto;
-  border-radius: 5px; 
+  width: 200px; /* Set a fixed width for the square image */
+  height: 200px; /* Set a fixed height for the square image */
+  object-fit: cover; /* Maintain the image's aspect ratio and crop if necessary */
+  object-position: top left; /* Align the image to the top-left corner */
+  margin: 0 auto; /* Center the image horizontally */
+  border-radius: 5px; /* Optional: Add a border-radius for a rounded look */
 }
 .description {
-  max-height: 6.8em; 
+  max-height: 6.8em; /* Limit to four lines of text */
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.6em;
 }
 
 .expanded {
-  max-height: none; 
+  max-height: none; /* Show full description when expanded */
 }
 
 .read-more-button {
@@ -274,6 +274,6 @@ export default {
   cursor: pointer;
 }
 .read-less-button {
-  background-color: #ff0000; 
+  background-color: #ff0000; /* Red background color */
 }
 </style>

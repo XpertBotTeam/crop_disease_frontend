@@ -6,19 +6,25 @@ export default {
   components: {
     AppHeader,
     AppFooter
+  },
+  computed: {
+    isAuthenticated() {
+      return localStorage.getItem("user-info") !== null;
+    }
   }
 }
 </script>
 
 <template>
   
-  <AppHeader/>
+  <AppHeader :isAuthenticated="isAuthenticated" />
   <router-view />
-  <AppFooter />
+  <AppFooter  />
 </template>
 
 
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
